@@ -14,17 +14,24 @@ public class Main {
             Statement statement=connection.createStatement();
             ResultSet resultSet=statement.executeQuery("SELECT * FROM Users");
             ContactRepo cr = new ContactRepo( connection, statement ) ;
-
-//            cr.save(new Contact("Tom",113,12,"Rick"));
+//cr.delete(114);
+//            cr.update(113);
+//            List<Contact > list =new ArrayList<>();
+//            list.add(new Contact("Tom",13,12,"UK"));
+//            list.add(new Contact("Tom",13,12,"UK"));
+//            cr.saveBulk(list);
+//            cr.save(new Contact("Tom",1,12,"Rick"));
 //            cr.save(new Contact("Ben",114,12,"Rick"));
 //            cr.delete(12);
 //            cr.update(113);
-            cr.getContactById(12);
-            List<Contact > list =new ArrayList<>();
-            list.add(new Contact("huy",13,12,"UK"));
-            list.add(new Contact("huy",13,12,"UK"));
+            List<Contact> list = new ArrayList();
 
-cr.saveBulk( list);
+            list= cr.getContacts();
+for (int i = 0; i< list.size();i++){
+    System.out.println(list.get(i).getName());
+}
+
+
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
